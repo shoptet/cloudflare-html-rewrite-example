@@ -1,0 +1,4 @@
+ENVIRONMENT = "development"
+
+# Shop homepage url in canonical www/non-www form (to avoid redirects)
+SHOP_URL = "https://classic.shoptet.cz/"
