@@ -1,4 +1,4 @@
 export interface Env {
-	ENVIRONMENT?: 'development';
+	ENVIRONMENT: 'production' | 'development';
 	SHOP_URL?: string;
 }

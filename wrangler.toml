@@ -3,3 +3,10 @@ main = "src/index.ts"
 compatibility_date = "2023-12-18"
 
 workers_dev = false
+vars = { ENVIRONMENT = "production" }
+
+[env.dev]
+workers_dev = true
+
+# SHOP_URL value should use canonical www/non-www form to avoid redirects
+vars = { ENVIRONMENT = "development", SHOP_URL = "https://classic.shoptet.cz/" }

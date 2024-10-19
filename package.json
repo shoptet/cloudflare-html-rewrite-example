@@ -3,9 +3,10 @@
 	"version": "0.0.0",
 	"private": true,
 	"scripts": {
-		"dev:local": "wrangler dev --live-reload",
-		"dev:remote": "wrangler dev --remote",
-		"deploy": "wrangler deploy"
+		"dev:local": "wrangler dev --live-reload --env dev",
+		"dev:remote": "wrangler dev --remote --env dev",
+		"deploy:staging": "wrangler deploy --env dev",
+		"deploy:production": "wrangler deploy --env production"
 	},
 	"devDependencies": {
 		"@cloudflare/workers-types": "^4.20240117.0",
