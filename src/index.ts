@@ -7,13 +7,13 @@ export default {
 
 		// In development, construct request and add suppress header to get non-modified HTML
 		// In production, pass request to origin server as is
-		if (env.ENVIRONMENT === 'development' && env.SHOP_URL) {
+		if (env.ENVIRONMENT === 'development') {
 			const url = new URL(request.url);
 			const headers = new Headers(request.headers);
 			headers.set('X-Suppress-HTML-Rewrite', '1');
 			const devRequest = new Request(request, { headers });
 
-			response = await fetch(`${env.SHOP_URL.replace(/\/$/, '')}${url.pathname}${url.search}${url.hash}`, devRequest);
+			response = await fetch(`${env.SHOP_URL!.replace(/\/$/, '')}${url.pathname}${url.search}${url.hash}`, devRequest);
 		} else {
 			response = await fetch(request);
 		}
