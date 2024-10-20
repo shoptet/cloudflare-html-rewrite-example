@@ -1,0 +1,6 @@
+[
+	"*.yourprojectdomain.com/admin/*",
+	"*.yourprojectdomain.com/user/*",
+	"*.yourprojectdomain.com/cms/*",
+	"*.yourprojectdomain.com/shop/dist/*"
+]

@@ -3,16 +3,16 @@ import { Env } from './types/env';
 export default {
 	async fetch(request: Request, env: Env) {
 		let response: Response;
+		const url = new URL(request.url);
 
 		// In development, construct request and add suppress header to get non-modified HTML
 		// In production, pass request to origin server as is
-		if (env.ENVIRONMENT === 'development' && env.SHOP_URL) {
-			const url = new URL(request.url);
+		if (env.ENVIRONMENT === 'development') {
 			const headers = new Headers(request.headers);
 			headers.set('X-Suppress-HTML-Rewrite', '1');
 			const devRequest = new Request(request, { headers });
 
-			response = await fetch(`${env.SHOP_URL.replace(/\/$/, '')}${url.pathname}${url.search}${url.hash}`, devRequest);
+			response = await fetch(`${env.SHOP_URL!.replace(/\/$/, '')}${url.pathname}${url.search}${url.hash}`, devRequest);
 		} else {
 			response = await fetch(request);
 		}
@@ -27,12 +27,23 @@ export default {
 			return response;
 		}
 
-		// Handle ajax requests to /action/* ,
-		if (request.url.includes('/action/')) {
+		// Pass through system or asset URLs
+		if (
+			url.pathname.startsWith('/admin/') ||
+			url.pathname.startsWith('/user/') ||
+			url.pathname.startsWith('/cms/') ||
+			url.pathname.startsWith('/shop/dist/')
+		) {
+			return response;
+		}
+
+		// Pass through ajax requests to /action/*
+		if (url.pathname.startsWith('/action/')) {
 			return response;
 		}
 
 		// If response is not HTML, it should pass through
+		// These should be ideally never reached in the first place, see docs/recommended-disabled-routes.md
 		if (!response.headers.get('Content-Type')?.startsWith('text/html')) {
 			return response;
 		}
