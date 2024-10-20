@@ -29,7 +29,7 @@ This will give you a simple Cloudflare Worker that can be run locally:
   - Shoptet project using Cloudflare as proxy (see [Shoptet docs](https://podpora.shoptet.cz/hc/cs/articles/7128655751826-Cloudflare))
   - Cloudflare account with access to project's Cloudflare dashboard. You will need `All domains` access with `Cloudflare Workers Admin` rights.
 - Run `npm run dev:remote` for local development.
-- Run `npm run deploy` to deploy using Wrangler.
+- Run `npm run deploy:production` to deploy using Wrangler.
 - Once you have deployed the worker, set up Workers Routes in the Cloudflare dashboard. This tells Cloudflare which routes to trigger your worker on. It is important to exclude common system routes, assets, etc. to save resources and prevent unexpected behavior.
 
 Example setting of Workers Routes (see [docs](https://developers.cloudflare.com/workers/configuration/routing/routes/) for details):
