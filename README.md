@@ -30,11 +30,13 @@ This will give you a simple Cloudflare Worker that can be run locally:
   - Cloudflare account with access to project's Cloudflare dashboard. You will need `All domains` access with `Cloudflare Workers Admin` rights.
 - Run `npm run dev:remote` for local development.
 - Run `npm run deploy:production` to deploy using Wrangler.
-- Once you have deployed the worker, set up Workers Routes in the Cloudflare dashboard. This tells Cloudflare which routes to trigger your worker on. It is important to exclude common system routes, assets, etc. to save resources and prevent unexpected behavior.
+- Once you have deployed the worker, set up Workers Routes in the Cloudflare dashboard of the selected domain. This tells Cloudflare which routes to trigger your worker on. It is important to exclude common system routes, assets, etc. to save resources and prevent unexpected behavior. Recommended disabled routes are listed [here](/docs/recommended-disabled-routes.json).
 
-Example setting of Workers Routes (see [docs](https://developers.cloudflare.com/workers/configuration/routing/routes/) for details):
+Example of typical settings of Workers Routes (see [docs](https://developers.cloudflare.com/workers/configuration/routing/routes/) for matching rules):
 
-![Alt text](docs/routes-setting.png)
+<img src="docs/img/cloudflare-navigation.png" alt="Cloudflare navigation" style="margin: 20px; padding: 10px; border: 1px solid gray" />
+
+<img src="docs/img/routes-setting.png" alt="Wourker Routes settings" style="margin: 20px; padding: 10px; border: 1px solid gray" />
 
 ## Parsing the entire document vs HTMLRewriter
 
