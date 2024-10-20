@@ -28,6 +28,7 @@ export default {
 		}
 
 		// Pass through system or asset URLs
+		// These should be ideally never reached in the first place, see docs/recommended-disabled-routes.md
 		if (
 			url.pathname.startsWith('/admin/') ||
 			url.pathname.startsWith('/user/') ||
@@ -43,7 +44,6 @@ export default {
 		}
 
 		// If response is not HTML, it should pass through
-		// These should be ideally never reached in the first place, see docs/recommended-disabled-routes.md
 		if (!response.headers.get('Content-Type')?.startsWith('text/html')) {
 			return response;
 		}
