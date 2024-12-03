@@ -1,5 +1,6 @@
 import { parse } from 'node-html-parser';
 import { Env } from './types/env';
+import { matchesDisabledRoute } from './utils/routes';
 
 export default {
 	async fetch(request: Request, env: Env) {
@@ -28,24 +29,13 @@ export default {
 			return response;
 		}
 
-		// Pass through system or asset URLs
-		// These should be ideally never reached in the first place, see docs/recommended-disabled-routes.md
-		if (
-			url.pathname.startsWith('/admin/') ||
-			url.pathname.startsWith('/user/') ||
-			url.pathname.startsWith('/cms/') ||
-			url.pathname.startsWith('/shop/dist/')
-		) {
-			return response;
-		}
-
-		// Pass through ajax requests to /action/*
-		if (url.pathname.startsWith('/action/')) {
-			return response;
-		}
-
 		// If response is not HTML, it should pass through
 		if (!response.headers.get('Content-Type')?.startsWith('text/html')) {
+			return response;
+		}
+
+		// Pass through system or asset URLs. These should be ideally never reached in the first place, see README.md
+		if (matchesDisabledRoute(url)) {
 			return response;
 		}
 
