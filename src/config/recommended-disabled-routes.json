@@ -1,0 +1,15 @@
+[
+	"*.yourprojectdomain.com/admin/*",
+	"*.yourprojectdomain.com/user/*",
+	"*.yourprojectdomain.com/cms/*",
+	"*.yourprojectdomain.com/shop/dist/*",
+	"*.yourprojectdomain.com/action/*",
+	"*.yourprojectdomain.com/api/*",
+	"*.yourprojectdomain.com/favicon.ico",
+	"*.yourprojectdomain.com/robots.txt",
+	"*.yourprojectdomain.com/cookies-settings/*",
+	"*.yourprojectdomain.com/na-postu/*",
+	"*.yourprojectdomain.com/do-balikovny/*",
+	"*.yourprojectdomain.com/ppl-partner/*",
+	"*.yourprojectdomain.com/personal-collection/*"
+]
