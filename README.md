@@ -19,7 +19,8 @@ This will give you a simple Cloudflare Worker that can be run locally:
   - Node.js installed on your system
 - Clone this repo and navigate to its root directory
 - Run `npm i`.
-- Run `npm run dev:local` Due to Cloudflare restrictions, you must use `npm run dev:remote` when developing against the site that is already using Cloudflare as a proxy.
+- ~~Run `npm run dev:local` Due to Cloudflare restrictions, you must use `npm run dev:remote` when developing against the site that is already using Cloudflare as a proxy.~~
+- Currently, the only way to use rewriting is to use `npm run dev:remote` for which you need to be logged in a (free) Cloudflare account. The usage counts towards your trier plan limits.
 - At <http://localhost:8787/> you should see a modified showcase project <https://classic.shoptet.cz/> The project can be switched by changing `SHOP_URL` env variable in `wrangler.toml`.
 - You can play around with `src/index.ts` and see your changes applied.
 
